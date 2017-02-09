@@ -10,8 +10,26 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="a00953080.comp3717.bcit.ca.newwesttriviaapp.MainActivity">
 
-    <TextView
+    <Button
+        android:text="Help"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_alignTop="@+id/question_button"
+        android:layout_alignStart="@+id/question_button"
+        android:layout_marginTop="71dp"
+        android:id="@+id/help_button" />
+
+    <Button
+        android:text="Start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/question_button"
+        android:width="@dimen/activity_horizontal_margin"
+        style="@style/Widget.AppCompat.Button"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
+        android:elevation="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="148dp"
+        android:onClick="toQuestion"/>
 </RelativeLayout>
