@@ -7,39 +7,42 @@ import java.util.List;
 
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.questions.schema.DaoMaster;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.questions.schema.DaoSession;
-import a00953080.comp3717.bcit.ca.newwesttriviaapp.questions.schema.Question;
+import a00953080.comp3717.bcit.ca.newwesttriviaapp.model.HighScore;
+import a00953080.comp3717.bcit.ca.newwesttriviaapp.questions.schema.HighScoreDao;
+import a00953080.comp3717.bcit.ca.newwesttriviaapp.model.Question;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.questions.schema.QuestionDao;
 
 /**
  * Created by Owner on 2017-02-02.
  */
 
-public class QuestionDBHelper {
+public class DatabaseHelper {
 
-    private final static String     TAG = QuestionDBHelper.class.getName();
-    private static QuestionDBHelper instance;
+    private final static String     TAG = DatabaseHelper.class.getName();
+    private static DatabaseHelper instance;
     private SQLiteDatabase          db;
     private DaoMaster               daoMaster;
     private DaoSession              daoSession;
     private QuestionDao             questionDao;
+    private HighScoreDao            highScoreDao;
     private DaoMaster.DevOpenHelper helper;
 
-    private QuestionDBHelper(final Context context)
+    private DatabaseHelper(final Context context)
     {
         openDatabaseForWriting(context);
     }
 
-    public synchronized static QuestionDBHelper getInstance(final Context context)
+    public synchronized static DatabaseHelper getInstance(final Context context)
     {
         if(instance == null)
         {
-            instance = new QuestionDBHelper(context);
+            instance = new DatabaseHelper(context);
         }
 
         return (instance);
     }
 
-    public static QuestionDBHelper getInstance()
+    public static DatabaseHelper getInstance()
     {
         if(instance == null)
         {
@@ -49,36 +52,43 @@ public class QuestionDBHelper {
         return (instance);
     }
 
-    private void openDatabase()
+    private DatabaseHelper openDatabase()
     {
         daoMaster      = new DaoMaster(db);
         daoSession     = daoMaster.newSession();
         questionDao    = daoSession.getQuestionDao();
+        highScoreDao   = daoSession.getHighScoreDao();
+        return this;
     }
 
-    public void openDatabaseForWriting(final Context context)
+    public DatabaseHelper openDatabaseForWriting(final Context context)
     {
         helper = new DaoMaster.DevOpenHelper(context,
                 "questions.db",
                 null);
         db = helper.getWritableDatabase();
         openDatabase();
+
+        return this;
     }
 
-    public void openDatabaseForReading(final Context context)
+    public DatabaseHelper openDatabaseForReading(final Context context)
     {
         final DaoMaster.DevOpenHelper helper;
 
         helper = new DaoMaster.DevOpenHelper(context,
-                "names.db",
+                "questions.db",
                 null);
         db = helper.getReadableDatabase();
         openDatabase();
+
+        return this;
     }
 
-    public void close()
+    public DatabaseHelper close()
     {
         helper.close();
+        return this;
     }
 
     public Question createQuestion(final Question question)
@@ -87,12 +97,13 @@ public class QuestionDBHelper {
         return (question);
     }
 
-    public List<Question> getQuestions()
+    public HighScore createHighScore(final HighScore highScore)
     {
-        return (questionDao.loadAll());
+        highScoreDao.insert(highScore);
+        return (highScore);
     }
 
-    public Question getNameByObjectId(final long id)
+    public Question getQuestionById(final long id)
     {
         final List<Question> questions;
         final Question       question;
@@ -111,4 +122,12 @@ public class QuestionDBHelper {
         return (question);
     }
 
+    public long numOfQuestions() { return questionDao.count(); }
+
+    public List<Question> getQuestions()
+    {
+        return (questionDao.loadAll());
+    }
+
+    public List<HighScore> getHighScores() { return highScoreDao.loadAll(); }
 }

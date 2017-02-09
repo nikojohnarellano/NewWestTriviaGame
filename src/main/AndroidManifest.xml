@@ -3,19 +3,20 @@
     package="a00953080.comp3717.bcit.ca.newwesttriviaapp">
 
     <application
+        android:name=".TriviaApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="New WestMinister Trivia"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".QuestionActivity"></activity>
+        <activity android:name=".activities.QuestionActivity"></activity>
     </application>
 
 </manifest>
