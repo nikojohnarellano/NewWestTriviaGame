@@ -21,7 +21,6 @@ public class QuestionGenerator {
     public QuestionGenerator(final Context context) {
         this.random  = new Random();
         this.context = context;
-        this.helper  = DatabaseHelper.getInstance(context);
     }
 
     public Question generateQuestion() {
@@ -29,11 +28,11 @@ public class QuestionGenerator {
         final int      randomId;
         final Question question;
 
+        helper  = DatabaseHelper.getInstance(context);
         helper.openDatabaseForReading(this.context);
 
         numOfquestions   = helper.numOfQuestions();
         randomId         = random.nextInt((int) numOfquestions) + 1;
-
         question         = helper.getQuestionById(randomId);
 
         helper.close();

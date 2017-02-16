@@ -19,7 +19,7 @@ import a00953080.comp3717.bcit.ca.newwesttriviaapp.questions.schema.QuestionDao;
 public class DatabaseHelper {
 
     private final static String     TAG = DatabaseHelper.class.getName();
-    private static DatabaseHelper instance;
+    private static DatabaseHelper   instance;
     private SQLiteDatabase          db;
     private DaoMaster               daoMaster;
     private DaoSession              daoSession;

@@ -5,6 +5,7 @@ import android.app.Application;
 import java.util.Stack;
 
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.model.Question;
+import a00953080.comp3717.bcit.ca.newwesttriviaapp.questions.DatabaseHelper;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.util.QuestionGenerator;
 
 /**
@@ -15,10 +16,6 @@ public class TriviaApp extends Application {
 
     private Stack<Question>   questionStack     = new Stack<>();
     private QuestionGenerator questionGenerator = new QuestionGenerator(this);
-
-    public QuestionGenerator getQuestionGenerator() {
-        return this.questionGenerator;
-    }
 
     public Question generateQuestion() {
         Question question;
