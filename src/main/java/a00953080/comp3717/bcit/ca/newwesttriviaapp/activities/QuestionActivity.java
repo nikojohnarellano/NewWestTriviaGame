@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.R;
@@ -73,9 +72,15 @@ public class QuestionActivity extends AppCompatActivity {
         feedBackView = (TextView)findViewById(R.id.feedback);
         clickedButton = (Button) View;
         String feedBackValue = clickedButton.getText() == question.getAnswer() ? "Correct" : "Incorrect";
-        feedBackView.setText(feedBackValue);
+        goToResult(feedBackValue);
+        //feedBackView.setText(feedBackValue);
     }
-
+    public void goToResult(String feedBack){
+        Intent intent = new Intent(this, ResultActivity.class);
+        intent.putExtra("feedback", feedBack);
+        startActivity(intent);
+        //need to close this current question activity//forget how
+    }
     public void backToHomePage(final View view) {
         final Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
