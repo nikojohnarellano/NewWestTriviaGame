@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.Window;
 
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.R;
+import a00953080.comp3717.bcit.ca.newwesttriviaapp.TriviaApp;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.model.Question;
+import a00953080.comp3717.bcit.ca.newwesttriviaapp.model.Score;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.questions.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,11 +25,19 @@ public class MainActivity extends AppCompatActivity {
         createQuestions();
 
     }
+
     public void toQuestion(final View view){
-        final Intent intent = new Intent(this, QuestionActivity.class);
+        final Intent intent;
+        final Score score;
+
+        intent = new Intent(this, QuestionActivity.class);
+        score  = new Score(TriviaApp.STARTING_SCORE, false);
+
+        ((TriviaApp) getApplication()).setScore(score);
+
         startActivity(intent);
-        finish();
     }
+
     public void toHelp(final View view){
 
     }
@@ -64,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                                         .setAnswer("NWSS Memorial Grounds")
                                         .setOption1("BC Penitentiary Cemetery")
                                         .setOption2("Woodlands Memorial Garden")
-                                        .setOption3("BC Penitentiary Cemetery"));
+                                        .setOption3("Vancouver Cemetery"));
 
             dbHelper.createQuestion(new Question()
                                         .setQuestion("How many Skytrain stations can be found in New Westminster?")

@@ -10,33 +10,44 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="a00953080.comp3717.bcit.ca.newwesttriviaapp.activities.ResultActivity">
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="56dp"
-        android:id="@+id/feedBack"
-        android:textSize="36sp" />
-
     <Button
         android:text="Quit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
         android:id="@+id/button"
-        android:layout_below="@+id/button2"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="76dp"
+        android:onClick="quit"/>
 
     <Button
         android:text="Next Question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button2"
-        android:layout_marginTop="68dp"
-        android:layout_below="@+id/feedBack"
+        android:id="@+id/nextQuestionBtn"
+        android:onClick="goToNextQuestion"
+        android:layout_above="@+id/button"
         android:layout_centerHorizontal="true"
-        android:onClick="goToNextQuestion"/>
+        android:layout_marginBottom="31dp" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="67dp"
+        android:id="@+id/feedBack"
+        android:textSize="24sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/currentScore"
+        android:textSize="36sp"
+        android:layout_marginTop="31dp"
+        android:layout_below="@+id/feedBack"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
