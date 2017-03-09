@@ -1,5 +1,6 @@
 package a00953080.comp3717.bcit.ca.newwesttriviaapp.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -13,6 +14,7 @@ import a00953080.comp3717.bcit.ca.newwesttriviaapp.R;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.TriviaApp;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.model.Question;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.model.RandomOption;
+import a00953080.comp3717.bcit.ca.newwesttriviaapp.model.Score;
 
 public class QuestionActivity extends AppCompatActivity {
     private TextView questionView;
@@ -25,9 +27,11 @@ public class QuestionActivity extends AppCompatActivity {
     private Button clickedButton;
 
     ///this might have to change unless we can get a random question from a different class and call it here
-    private Question     question;
-    private RandomOption randomOption;
-    private CountDownTimer cTimer;
+    private Question        question;
+    private RandomOption    randomOption;
+    private CountDownTimer  cTimer;
+
+    private Score           score;
 
 
     @Override
@@ -46,8 +50,9 @@ public class QuestionActivity extends AppCompatActivity {
         answerButton3 = (Button)findViewById(R.id.answerButton3);
         answerButton4 = (Button)findViewById(R.id.answerButton4);
 
-        question     = ((TriviaApp) getApplication()).generateQuestion();
-        randomOption = new RandomOption(question);
+        question      = ((TriviaApp) getApplication()).generateQuestion();
+        score         = ((TriviaApp) getApplication()).getScore();
+        randomOption  = new RandomOption(question);
 
         //sets the question on the page to the question of Question object
         questionView.setText(question.getQuestion());
@@ -69,16 +74,21 @@ public class QuestionActivity extends AppCompatActivity {
 
     //somehow need to get the question
     public void checkAnswer(final View View){
-        feedBackView = (TextView)findViewById(R.id.feedback);
+        feedBackView  = (TextView)findViewById(R.id.feedback);
         clickedButton = (Button) View;
-        String feedBackValue = clickedButton.getText() == question.getAnswer() ? "Correct" : "Incorrect";
-        goToResult(feedBackValue);
-        //feedBackView.setText(feedBackValue);
+
+        if(clickedButton.getText().equals(question.getAnswer())) {
+            score.correct();
+        } else {
+            score.incorrect();
+        }
+
+        goToResult();
     }
-    public void goToResult(String feedBack){
+    public void goToResult(){
         Intent intent = new Intent(this, ResultActivity.class);
-        intent.putExtra("feedback", feedBack);
         startActivity(intent);
+        finish();
         //need to close this current question activity//forget how
     }
     public void backToHomePage(final View view) {
@@ -89,12 +99,22 @@ public class QuestionActivity extends AppCompatActivity {
 
     //start timer function
     private void startTimer() {
+        final Context context = this;
+        final Score   score   = this.score;
+
         cTimer = new CountDownTimer(20000, 1000) {
             public void onTick(long millisUntilFinished)  {
                 countdownView.setText("seconds remaining: " + millisUntilFinished / 1000);
             }
             public void onFinish() {
-                countdownView.setText("Game over");
+                final Intent intent;
+
+                score.setGameOver(true);
+
+                ((TriviaApp) getApplication()).setScore(score);
+                intent = new Intent(context, ResultActivity.class);
+                startActivity(intent);
+                finish();
             }
         };
         cTimer.start();

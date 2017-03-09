@@ -35,7 +35,8 @@
         android:id="@+id/answerButton4"
         android:layout_marginBottom="72dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="checkAnswer"/>
 
     <Button
         android:text="Button"

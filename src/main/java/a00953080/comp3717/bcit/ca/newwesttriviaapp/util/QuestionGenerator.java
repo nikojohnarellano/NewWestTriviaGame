@@ -3,6 +3,7 @@ package a00953080.comp3717.bcit.ca.newwesttriviaapp.util;
 import android.content.Context;
 
 import java.util.Random;
+import java.util.Stack;
 
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.questions.DatabaseHelper;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.model.Question;
@@ -13,25 +14,25 @@ import a00953080.comp3717.bcit.ca.newwesttriviaapp.model.Question;
 
 public class QuestionGenerator {
 
-    private Context        context;
-    private DatabaseHelper helper;
-
-    private Random random;
+    private Context         context;
+    private DatabaseHelper  helper;
+    private static long     numOfQuestions;
 
     public QuestionGenerator(final Context context) {
-        this.random  = new Random();
-        this.context = context;
+        this.context       = context;
     }
 
     public Question generateQuestion() {
         final long     numOfquestions;
         final int      randomId;
         final Question question;
+        final Random   random;
 
-        helper  = DatabaseHelper.getInstance(context);
-        helper.openDatabaseForReading(this.context);
+        random = new Random(System.currentTimeMillis());
 
-        numOfquestions   = helper.numOfQuestions();
+        helper  = DatabaseHelper.getInstance(context).openDatabaseForReading(this.context);
+
+        numOfquestions   = getNumOfQuestions();
         randomId         = random.nextInt((int) numOfquestions) + 1;
         question         = helper.getQuestionById(randomId);
 
@@ -39,5 +40,17 @@ public class QuestionGenerator {
 
         return question;
     }
+
+    public long getNumOfQuestions() {
+        if(numOfQuestions == 0) {
+            helper  = DatabaseHelper.getInstance(context).openDatabaseForReading(this.context);
+            numOfQuestions   = helper.numOfQuestions();
+            helper.close();
+        }
+
+        return numOfQuestions;
+    }
+
+
 
 }

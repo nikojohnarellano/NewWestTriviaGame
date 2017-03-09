@@ -118,5 +118,16 @@ public class Question {
 
     // KEEP METHODS - put your custom methods here
     // KEEP METHODS END
+    @Override
+    public boolean equals(Object o) {
 
+        if(o == this)
+            return true;
+        if(!(o instanceof Question))
+            return false;
+
+        Question q = (Question) o;
+
+        return q.getId() == this.getId();
+    }
 }
