@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -17,6 +18,8 @@ import a00953080.comp3717.bcit.ca.newwesttriviaapp.model.Score;
 public class ResultActivity extends AppCompatActivity {
     private TextView feedback;
     private TextView scoreView;
+    private TextView errorView;
+    private EditText wagerText;
     private Button   nextQuestion;
 
     private Score    score;
@@ -28,16 +31,17 @@ public class ResultActivity extends AppCompatActivity {
 
         feedback      = (TextView)findViewById(R.id.feedBack);
         scoreView     = (TextView)findViewById(R.id.currentScore);
+        errorView     = (TextView)findViewById(R.id.error);
+        wagerText     = (EditText)findViewById(R.id.wager);
         nextQuestion  = (Button) findViewById(R.id.nextQuestionBtn);
 
-        score         = ((TriviaApp) getApplication()).getScore();
 
+        score         = ((TriviaApp) getApplication()).getScore();
         update();
     }
 
     public void update() {
         final String feedbackValue;
-
         feedbackValue = this.score.isPreviousAnswerCorrect() ? "Correct" : "Incorrect";
 
         scoreAnimation();
@@ -45,9 +49,30 @@ public class ResultActivity extends AppCompatActivity {
 
         feedback.setText(feedbackValue);
     }
+    public boolean validateWager(){
+        String value = wagerText.getText().toString();
+        if(value.isEmpty())
+            return true;
+        Long bet = Long.parseLong(value);
+        if(bet > this.score.getScore())
+            return false;
+        return true;
+    }
+    public void updateWager(){
+        String value = wagerText.getText().toString();
+        if(!value.isEmpty())
+            this.score.setWager(Long.parseLong(value));
+        else
+            this.score.setWager(0);
+    }
 
     public void goToNextQuestion(final View view){
+        if(!validateWager()){
+            errorView.setText("You cannot wager more than your current score");
+            return;
+        }
         Intent nextQuestionIntent = new Intent(this, QuestionActivity.class);
+        updateWager();
         startActivity(nextQuestionIntent);
         finish();
         //close current activity

@@ -1,6 +1,5 @@
 package a00953080.comp3717.bcit.ca.newwesttriviaapp.activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -53,6 +52,7 @@ public class QuestionActivity extends AppCompatActivity {
         question      = ((TriviaApp) getApplication()).generateQuestion();
         score         = ((TriviaApp) getApplication()).getScore();
         randomOption  = new RandomOption(question);
+
 
         //sets the question on the page to the question of Question object
         questionView.setText(question.getQuestion());

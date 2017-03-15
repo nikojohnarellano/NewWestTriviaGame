@@ -50,4 +50,23 @@
         android:layout_below="@+id/feedBack"
         android:layout_centerHorizontal="true" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/wager"
+        android:singleLine="false"
+        android:selectAllOnFocus="false"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/wager"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/error" />
+
 </RelativeLayout>

@@ -12,6 +12,7 @@ public class Score {
     private long    previousScore;
     private boolean isGameOver;
     private boolean isPreviousAnswerCorrect;
+    private long    wager;
 
     public Score(long score, boolean isGameOver) {
         this.score      = score;
@@ -25,6 +26,10 @@ public class Score {
     public void setScore(long score) {
         this.score = score;
     }
+
+    public long getWager() { return wager; }
+
+    public void setWager(long wager) { this.wager = wager; }
 
     public boolean isGameOver() {
         return isGameOver;
@@ -41,16 +46,26 @@ public class Score {
     public void setPreviousAnswerCorrect(boolean previousAnswerCorrect) {
         isPreviousAnswerCorrect = previousAnswerCorrect;
     }
+    public boolean isWagerSet(){
+        return wager > TriviaApp.CORRECT_SCORE_ADD;
+    }
+
 
     public void correct() {
         this.setPreviousScore(this.score);
-        this.setScore(this.score + TriviaApp.CORRECT_SCORE_ADD);
+        if(isWagerSet())
+            this.setScore(this.score + wager);
+        else
+            this.setScore(this.score + TriviaApp.CORRECT_SCORE_ADD);
         this.setPreviousAnswerCorrect(true);
     }
 
     public void incorrect() {
         this.setPreviousScore(this.score);
-        this.setScore(this.score + TriviaApp.WRONG_SCORE_ADD);
+        if(isWagerSet())
+            this.setScore(this.score - wager);
+        else
+            this.setScore(this.score + TriviaApp.WRONG_SCORE_ADD);
         this.setPreviousAnswerCorrect(false);
 
         if(this.getScore() == 0) {
