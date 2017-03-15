@@ -83,23 +83,30 @@ public class QuestionActivity extends AppCompatActivity {
             score.incorrect();
         }
 
-        goToResult();
+        if(score.isGameOver()) {
+            goToGameOver();
+        } else {
+            goToResult();
+        }
     }
+
     public void goToResult(){
         Intent intent = new Intent(this, ResultActivity.class);
         startActivity(intent);
         finish();
-        //need to close this current question activity//forget how
     }
-    public void backToHomePage(final View view) {
-        final Intent intent = new Intent(this, MainActivity.class);
+
+    public void goToGameOver(){
+        Intent intent = new Intent(this, GameOverActivity.class);
         startActivity(intent);
         finish();
     }
 
-    //start timer function
+    public void backToHomePage(final View view) {
+        finish();
+    }
+
     private void startTimer() {
-        final Context context = this;
         final Score   score   = this.score;
 
         cTimer = new CountDownTimer(20000, 1000) {
@@ -107,14 +114,10 @@ public class QuestionActivity extends AppCompatActivity {
                 countdownView.setText("seconds remaining: " + millisUntilFinished / 1000);
             }
             public void onFinish() {
-                final Intent intent;
-
                 score.setGameOver(true);
 
                 ((TriviaApp) getApplication()).setScore(score);
-                intent = new Intent(context, ResultActivity.class);
-                startActivity(intent);
-                finish();
+                goToGameOver();
             }
         };
         cTimer.start();

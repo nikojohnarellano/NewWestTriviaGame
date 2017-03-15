@@ -1,5 +1,6 @@
 package a00953080.comp3717.bcit.ca.newwesttriviaapp.activities;
 
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -31,32 +32,18 @@ public class ResultActivity extends AppCompatActivity {
 
         score         = ((TriviaApp) getApplication()).getScore();
 
-        Intent intent        = getIntent();
-        String feedBackValue = intent.getStringExtra("feedback");
-
         update();
     }
 
     public void update() {
         final String feedbackValue;
 
-        if(this.score.isGameOver()) {
-            scoreView.setText("Game Over");
-            feedback.setVisibility(View.GONE);
-            nextQuestion.setVisibility(View.GONE);
-            changeBackGroundColor("");
-            return;
-        }
+        feedbackValue = this.score.isPreviousAnswerCorrect() ? "Correct" : "Incorrect";
 
-        if(this.score.isPreviousAnswerCorrect()) {
-            feedbackValue = "Correct";
-        } else {
-            feedbackValue = "Incorrect";
-        }
+        scoreAnimation();
+        changeBackGroundColor();
 
-        scoreView.setText    (Long.toString(this.score.getScore()));
-        feedback.setText     (feedbackValue);
-        changeBackGroundColor(feedbackValue);
+        feedback.setText(feedbackValue);
     }
 
     public void goToNextQuestion(final View view){
@@ -66,11 +53,26 @@ public class ResultActivity extends AppCompatActivity {
         //close current activity
     }
 
-    public void changeBackGroundColor(String feedBackValue){
+    public void changeBackGroundColor(){
         RelativeLayout bg = (RelativeLayout)findViewById(R.id.activity_result);
-        int color = feedBackValue.contentEquals("Correct") ? Color.GREEN : Color.RED;
-        System.out.println(feedBackValue);
+        int color = this.score.isPreviousAnswerCorrect() ? Color.GREEN : Color.RED;
         bg.setBackgroundColor(color);
+    }
+
+    private void scoreAnimation() {
+        final long    scoreValue        = this.score.getScore();
+        final long    previousScore     = this.score.getPreviousScore();
+
+        ValueAnimator animator = new ValueAnimator();
+        animator.setObjectValues((int)previousScore, (int)scoreValue);
+        animator.setDuration(1000);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            public void onAnimationUpdate(ValueAnimator animation) {
+                ResultActivity.this.scoreView.setText("" + (int) animation.getAnimatedValue());
+            }
+        });
+        animator.start();
+
     }
 
     public void quit(final View view) {
