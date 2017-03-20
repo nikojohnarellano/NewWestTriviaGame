@@ -28,4 +28,15 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="113dp"
         android:id="@+id/gameOverText" />
+
+    <Button
+        android:text="Share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="38dp"
+        android:id="@+id/fb_share_button"
+        style="@style/com_facebook_button_share"
+        android:layout_above="@+id/quit"
+        android:layout_alignStart="@+id/quit"
+        android:onClick="share" />
 </RelativeLayout>
