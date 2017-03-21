@@ -6,7 +6,6 @@ import java.util.Stack;
 
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.model.Question;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.model.Score;
-import a00953080.comp3717.bcit.ca.newwesttriviaapp.questions.DatabaseHelper;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.util.QuestionGenerator;
 
 /**
@@ -19,7 +18,7 @@ public class TriviaApp extends Application {
     private QuestionGenerator questionGenerator = new QuestionGenerator(this);
     private Score             score;
 
-    public static final long  STARTING_SCORE       = 50;
+    public static final long  STARTING_SCORE       = 100;
     public static final long  CORRECT_SCORE_ADD    = 25;
     public static final long  WRONG_SCORE_ADD      = -25;
 
