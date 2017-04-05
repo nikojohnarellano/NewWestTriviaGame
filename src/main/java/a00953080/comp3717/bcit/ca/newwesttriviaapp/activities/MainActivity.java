@@ -84,28 +84,12 @@ public class MainActivity extends AppCompatActivity {
                     .setOption2("6")
                     .setOption3("7"));
 
-
-
             dbHelper.createQuestion(new Question()
                     .setQuestion("Which city has the highest population density per square kilometer?")
                     .setAnswer("New Westminster")
                     .setOption1("North Vancouver")
                     .setOption2("Langley")
                     .setOption3("Surrey"));
-
-            dbHelper.createQuestion(new Question()
-                    .setQuestion("Which city has the highest population density per square kilometer?")
-                    .setAnswer("Vancouver")
-                    .setOption1("New Westminster")
-                    .setOption2("Burnaby")
-                    .setOption3("White Rock"));
-
-            dbHelper.createQuestion(new Question()
-                    .setQuestion("Which city has the highest population density per square kilometer?")
-                    .setAnswer("New Westminster")
-                    .setOption1("Port Coquitlam")
-                    .setOption2("Richmond")
-                    .setOption3("Mission"));
 
             dbHelper.createQuestion(new Question()
                     .setQuestion("What is the population of New Westminster?")
@@ -211,22 +195,13 @@ public class MainActivity extends AppCompatActivity {
                     .setOption1("952")
                     .setOption2("1,048")
                     .setOption3("1,203"));
-
-            dbHelper.createQuestion(new Question()
-                    .setQuestion("How many Skytrain Stations are there in New Westminster?")
-                    .setAnswer("5")
-                    .setOption1("4")
-                    .setOption2("6")
-                    .setOption3("3"));
-
+            
             dbHelper.createQuestion(new Question()
                     .setQuestion("Which is not a real Skytrain station in New Westminster?")
                     .setAnswer("Brunette Station")
                     .setOption1("Braid Station")
                     .setOption2("New Westminster Station")
                     .setOption3("22nd St Station"));
-
-
 
         }
     }
