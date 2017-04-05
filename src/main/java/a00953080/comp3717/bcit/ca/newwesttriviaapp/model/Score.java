@@ -68,7 +68,7 @@ public class Score {
             this.setScore(this.score + TriviaApp.WRONG_SCORE_ADD);
         this.setPreviousAnswerCorrect(false);
 
-        if(this.getScore() == 0) {
+        if(this.getScore() <= 0) {
             this.setGameOver(true);
         }
     }

@@ -8,44 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="a00953080.comp3717.bcit.ca.newwesttriviaapp.activities.QuestionActivity">
-
-    <Button
-    android:text="Button"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/answerButton1"
-    android:onClick="checkAnswer"
-        android:layout_above="@+id/answerButton2"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:text="Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/answerButton2"
-        android:onClick="checkAnswer"
-        android:layout_above="@+id/answerButton3"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:text="Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/answerButton4"
-        android:layout_marginBottom="72dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:onClick="checkAnswer"/>
-
-    <Button
-        android:text="Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/answerButton3"
-        android:onClick="checkAnswer"
-        android:layout_above="@+id/answerButton4"
-        android:layout_alignParentStart="true" />
+    tools:context="a00953080.comp3717.bcit.ca.newwesttriviaapp.activities.QuestionActivity"
+    android:background="@android:color/black">
 
     <TextView
         android:layout_width="match_parent"
@@ -53,7 +17,8 @@
         android:id="@+id/feedback"
         android:layout_marginBottom="58dp"
         android:layout_above="@+id/answerButton1"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:text="Question Question Question Question"
@@ -62,16 +27,18 @@
         android:id="@+id/question_text"
         android:layout_marginBottom="25dp"
         android:layout_alignBottom="@+id/feedback"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
 
     <Button
         android:text="Back"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
         android:id="@+id/backButton"
-        android:onClick="backToHomePage"/>
+        android:onClick="backToHomePage"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_bright"
+        android:minHeight="0dp"/>
 
     <TextView
         android:text="TextView"
@@ -79,7 +46,52 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/countdownTimer" />
+        android:id="@+id/countdownTimer"
+        android:textColor="@android:color/holo_red_light" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answerButton4"
+        android:layout_marginBottom="46dp"
+        android:onClick="checkAnswer"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="@android:color/holo_red_light" />
+
+    <Button
+    android:text="Button"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/answerButton1"
+    android:onClick="checkAnswer"
+        android:background="@android:color/holo_orange_dark"
+        android:layout_above="@+id/answerButton2"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="15dp" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answerButton2"
+        android:onClick="checkAnswer"
+        android:background="@android:color/holo_blue_bright"
+        android:layout_marginBottom="12dp"
+        android:layout_above="@+id/answerButton3"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answerButton3"
+        android:onClick="checkAnswer"
+        android:background="@android:color/holo_purple"
+        android:layout_marginBottom="14dp"
+        android:layout_above="@+id/answerButton4"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>

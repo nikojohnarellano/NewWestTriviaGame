@@ -29,7 +29,6 @@ public class QuestionActivity extends AppCompatActivity {
     private Question        question;
     private RandomOption    randomOption;
     private CountDownTimer  cTimer;
-
     private Score           score;
 
 
