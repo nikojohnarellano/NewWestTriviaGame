@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="a00953080.comp3717.bcit.ca.newwesttriviaapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".TriviaApp"
@@ -12,12 +12,14 @@
         android:label="New WestMinister Trivia"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-                    android:value="@string/facebook_app_id"/>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
 
-        <provider android:authorities="com.facebook.app.FacebookContentProvider1277470608998587"
-                    android:name="com.facebook.FacebookContentProvider"
-                    android:exported="true"/>
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider1277470608998587"
+            android:exported="true" />
 
         <activity android:name=".activities.SplashScreen">
             <intent-filter>
@@ -29,7 +31,7 @@
         <activity android:name=".activities.QuestionActivity" />
         <activity android:name=".activities.ResultActivity" />
         <activity android:name=".activities.MainActivity" />
-        <activity android:name=".activities.GameOverActivity"></activity>
+        <activity android:name=".activities.GameOverActivity" />
     </application>
 
 </manifest>
