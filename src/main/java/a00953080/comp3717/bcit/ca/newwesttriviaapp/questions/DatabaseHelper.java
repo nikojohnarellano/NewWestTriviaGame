@@ -130,4 +130,8 @@ public class DatabaseHelper {
     }
 
     public List<HighScore> getHighScores() { return highScoreDao.loadAll(); }
+
+    public void deleteAll() {
+        questionDao.deleteAll();
+    }
 }
