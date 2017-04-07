@@ -1,5 +1,6 @@
 package a00953080.comp3717.bcit.ca.newwesttriviaapp.activities;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,21 +13,27 @@ import com.facebook.share.widget.ShareDialog;
 
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.R;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.TriviaApp;
+import a00953080.comp3717.bcit.ca.newwesttriviaapp.model.HighScore;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.model.Score;
+import a00953080.comp3717.bcit.ca.newwesttriviaapp.questions.DatabaseHelper;
 
 public class GameOverActivity extends AppCompatActivity {
 
     private TextView    gameOver;
+    private TextView    name;
     private Button      quitBtn;
+    private Button      saveScoreBtn;
     private ShareDialog shareDialog;
-
+    private TextView    myscore;
     private Score       score;
+    private DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_over);
 
+        db = DatabaseHelper.getInstance(this);
         shareDialog = new ShareDialog(this);
         score       = ((TriviaApp) getApplication()).getScore();
 
@@ -35,6 +42,13 @@ public class GameOverActivity extends AppCompatActivity {
 
         gameOver.setText("Game Over");
 
+        myscore = (TextView) findViewById(R.id.score);
+        myscore.setText("Final Score: " + score.getHighScore());
+
+        name = (TextView) findViewById(R.id.name);
+
+
+        saveScoreBtn = (Button)findViewById(R.id.saveHighscore);
         Button shareButton = (Button)findViewById(R.id.fb_share_button);
 
     }
@@ -50,7 +64,15 @@ public class GameOverActivity extends AppCompatActivity {
         }
     }
 
+    public void saveHighscore(final View view) {
+        HighScore myHighscore = new HighScore();
+        myHighscore.setName(name.getText().toString());
+        myHighscore.setScore((int)score.getHighScore());
+        db.createHighScore(myHighscore);
 
+        Intent intent = new Intent(this, HighscoreActivity.class);
+        startActivity(intent);
+    }
     protected void facebookSDKInitialize() {
        //FacebookSdk.sd
     }

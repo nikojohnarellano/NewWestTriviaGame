@@ -39,4 +39,33 @@
         android:layout_above="@+id/quit"
         android:layout_alignStart="@+id/quit"
         android:onClick="share" />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:text="My score"
+        android:layout_below="@+id/gameOverText"
+        android:layout_alignStart="@+id/fb_share_button" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:layout_below="@+id/score"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/saveHighscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_centerHorizontal="true"
+        android:onClick="saveHighscore"
+        android:text="Save Highscore" />
 </RelativeLayout>

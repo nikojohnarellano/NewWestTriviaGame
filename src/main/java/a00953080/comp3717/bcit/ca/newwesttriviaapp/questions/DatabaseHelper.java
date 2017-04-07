@@ -131,6 +131,14 @@ public class DatabaseHelper {
 
     public List<HighScore> getHighScores() { return highScoreDao.loadAll(); }
 
+    public List<HighScore> getTopHighScores() {
+        final List<HighScore> topScores;
+
+        topScores = highScoreDao.queryBuilder().orderAsc(HighScoreDao.Properties.Score).limit(5).list();
+
+        return topScores;
+    }
+
     public void deleteAll() {
         questionDao.deleteAll();
     }
