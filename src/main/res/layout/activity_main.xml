@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -15,7 +16,7 @@
         android:text="Start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/question_button"
+        android:id="@+id/start_button"
         android:width="@dimen/activity_horizontal_margin"
         style="@style/Widget.AppCompat.Button"
         android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
@@ -32,26 +33,19 @@
         android:text="Help"
         android:layout_height="wrap_content"
         android:id="@+id/help_button"
-        android:layout_marginBottom="63dp"
         android:backgroundTint="@android:color/holo_blue_bright"
         android:elevation="0dp"
         android:textSize="18sp"
         android:layout_width="match_parent"
+        android:height="200px"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:height="200px" />
+        android:layout_alignParentStart="true" />
 
-    <TextView
-        android:text="New Westminster Quiz"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        tools:text="New Westminster Quiz"
-        android:textSize="36sp"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:fontFamily="serif"
-        android:layout_above="@+id/question_button"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="47dp" />
+        app:srcCompat="@drawable/logonewwest"
+        android:id="@+id/titleLogo"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

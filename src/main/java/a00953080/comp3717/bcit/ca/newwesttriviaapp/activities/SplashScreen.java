@@ -29,7 +29,6 @@ public class SplashScreen extends AppCompatActivity {
 
         gifImageView = (GifImageView)findViewById(R.id.gifImageView);
 
-
         try
         {
             InputStream inputStream = getAssets().open("spinner1.gif");

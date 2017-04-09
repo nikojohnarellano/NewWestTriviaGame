@@ -5,6 +5,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.R;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.TriviaApp;
@@ -13,15 +19,35 @@ import a00953080.comp3717.bcit.ca.newwesttriviaapp.model.Score;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.questions.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity {
+    private ImageView title;
+    private Button start;
+    private Button help;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         //Remove title bar
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.activity_main);
+
+
+        title   = (ImageView) findViewById(R.id.titleLogo);
+        start   = (Button) findViewById(R.id.start_button);
+        help    = (Button) findViewById(R.id.help_button);
+
+        title.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, R.anim.movetitle));
+
+        // Prepare the View for the animation
+        start.setAlpha(0.0f);
+        help.setAlpha(0.0f);
+
+        // Start the animation
+        start.animate().setStartDelay(5000).alpha(1.0f);
+        help.animate().setStartDelay(5000).alpha(1.0f);
+
         //deleteAllQuestions();
         createQuestions();
 

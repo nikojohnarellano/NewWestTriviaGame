@@ -37,20 +37,14 @@ public class GameOverActivity extends AppCompatActivity {
         shareDialog = new ShareDialog(this);
         score       = ((TriviaApp) getApplication()).getScore();
 
-        gameOver = (TextView) findViewById(R.id.gameOverText);
-        quitBtn  = (Button) findViewById(R.id.quit);
+        gameOver     = (TextView) findViewById(R.id.gameOverText);
+        quitBtn      = (Button)   findViewById(R.id.quit);
+        myscore      = (TextView) findViewById(R.id.score);
+        name         = (TextView) findViewById(R.id.name);
+        saveScoreBtn = (Button)   findViewById(R.id.saveHighscore);
 
         gameOver.setText("Game Over");
-
-        myscore = (TextView) findViewById(R.id.score);
         myscore.setText("Final Score: " + score.getHighScore());
-
-        name = (TextView) findViewById(R.id.name);
-
-
-        saveScoreBtn = (Button)findViewById(R.id.saveHighscore);
-        Button shareButton = (Button)findViewById(R.id.fb_share_button);
-
     }
 
     public void share(final View view) {
@@ -69,12 +63,10 @@ public class GameOverActivity extends AppCompatActivity {
         myHighscore.setName(name.getText().toString());
         myHighscore.setScore((int)score.getHighScore());
         db.createHighScore(myHighscore);
+        db.close();
 
         Intent intent = new Intent(this, HighscoreActivity.class);
         startActivity(intent);
-    }
-    protected void facebookSDKInitialize() {
-       //FacebookSdk.sd
     }
 
     public void quit(final View view) {

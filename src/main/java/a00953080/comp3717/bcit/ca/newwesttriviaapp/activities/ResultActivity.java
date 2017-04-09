@@ -45,17 +45,21 @@ public class ResultActivity extends AppCompatActivity {
         feedbackValue = this.score.isPreviousAnswerCorrect() ? "Correct" : "Incorrect";
 
         scoreAnimation();
-        changeBackGroundColor();
-
+        feedback.setTextColor(this.score.isPreviousAnswerCorrect() ? Color.GREEN : Color.RED);
         feedback.setText(feedbackValue);
     }
     public boolean validateWager(){
-        String value = wagerText.getText().toString();
+        final String value = wagerText.getText().toString();
+        final Long   bet;
+
         if(value.isEmpty())
-            return true;
-        Long bet = Long.parseLong(value);
+            return false;
+
+        bet = Long.parseLong(value);
+
         if(bet > this.score.getScore())
             return false;
+
         return true;
     }
     public void updateWager(){
@@ -78,12 +82,6 @@ public class ResultActivity extends AppCompatActivity {
         //close current activity
     }
 
-    public void changeBackGroundColor(){
-        RelativeLayout bg = (RelativeLayout)findViewById(R.id.activity_result);
-        int color = this.score.isPreviousAnswerCorrect() ? Color.GREEN : Color.RED;
-        bg.setBackgroundColor(color);
-    }
-
     private void scoreAnimation() {
         final long    scoreValue        = this.score.getScore();
         final long    previousScore     = this.score.getPreviousScore();
@@ -93,6 +91,7 @@ public class ResultActivity extends AppCompatActivity {
         animator.setDuration(1000);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             public void onAnimationUpdate(ValueAnimator animation) {
+                ResultActivity.this.scoreView.setTextColor(Color.WHITE);
                 ResultActivity.this.scoreView.setText("" + (int) animation.getAnimatedValue());
             }
         });
