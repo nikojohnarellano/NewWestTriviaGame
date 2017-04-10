@@ -134,7 +134,7 @@ public class DatabaseHelper {
     public List<HighScore> getTopHighScores() {
         final List<HighScore> topScores;
 
-        topScores = highScoreDao.queryBuilder().orderAsc(HighScoreDao.Properties.Score).limit(5).list();
+        topScores = highScoreDao.queryBuilder().orderDesc(HighScoreDao.Properties.Score).limit(5).list();
 
         return topScores;
     }
