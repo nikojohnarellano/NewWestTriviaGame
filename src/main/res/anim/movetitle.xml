@@ -4,9 +4,9 @@
     android:fillAfter="true">
 
     <translate
-        android:startOffset="3000"
+        android:startOffset="2500"
         android:fromYDelta="25%p"
         android:toYDelta="10%p"
-        android:duration="1200" />
+        android:duration="1000" />
 
 </set>

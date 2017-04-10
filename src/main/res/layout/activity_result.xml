@@ -20,51 +20,10 @@
         android:layout_marginBottom="14dp"
         android:layout_above="@+id/button"
         android:layout_centerHorizontal="true"
-        android:layout_height="60dp"
         android:textColor="@color/cardview_light_background"
         android:background="?android:attr/colorFocusedHighlight"
-        android:textSize="16sp" />
-
-    <Button
-        android:text="Quit"
-        android:layout_width="200dp"
-        android:id="@+id/button"
-        android:layout_marginBottom="22dp"
-        android:onClick="quit"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_height="60dp"
-        android:textColor="@color/cardview_light_background"
-        android:background="@android:color/darker_gray"
-        android:textSize="16sp" />
-
-    <com.felipecsl.gifimageview.library.GifImageView
-        android:id="@+id/downArrowGif"
-        android:scaleType="fitCenter"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignTop="@+id/currentScore"
-        android:layout_toStartOf="@+id/feedBack" />
-
-    <TextView
-        android:text="Wager:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView2"
-        android:textSize="24sp"
-        android:textColor="@color/cardview_light_background"
-        android:layout_alignBaseline="@+id/wager"
-        android:layout_alignBottom="@+id/wager"
-        android:layout_alignStart="@+id/downArrowGif"
-        android:layout_marginStart="10dp" />
-
-    <com.felipecsl.gifimageview.library.GifImageView
-        android:id="@+id/upArrowGif"
-        android:scaleType="fitCenter"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignTop="@+id/downArrowGif"
-        android:layout_alignStart="@+id/textView2" />
+        android:textSize="16sp"
+        android:layout_height="50dp" />
 
     <TextView
         android:text="TextView"
@@ -77,26 +36,38 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
+    <Button
+        android:text="Quit"
+        android:layout_width="200dp"
+        android:id="@+id/button"
+        android:onClick="quit"
+        android:textColor="@color/cardview_light_background"
+        android:background="@android:color/darker_gray"
+        android:textSize="16sp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/nextQuestionBtn" />
+
+    <TextView
+        android:id="@+id/error"
+        android:textSize="14sp"
+        android:textColor="@color/cardview_light_background"
+        android:layout_height="30dp"
+        android:layout_width="300dp"
+        android:layout_above="@+id/wager"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="64dp" />
+
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/currentScore"
         android:textSize="36sp"
-        android:layout_marginTop="18dp"
         tools:textColor="@color/cardview_light_background"
         android:layout_below="@+id/feedBack"
-        android:layout_toEndOf="@+id/textView2" />
-
-    <TextView
-        android:id="@+id/error"
-        android:textSize="14sp"
-        android:layout_marginTop="32dp"
-        android:textColor="@color/cardview_light_background"
-        android:layout_height="30dp"
-        android:layout_width="300dp"
-        android:layout_below="@+id/downArrowGif"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -109,8 +80,21 @@
         android:width="200px"
         tools:textColor="@color/cardview_light_background"
         android:textColor="@android:color/white"
-        android:layout_marginBottom="38dp"
+        android:layout_marginBottom="36dp"
+        android:textSize="24sp"
         android:layout_above="@+id/nextQuestionBtn"
-        android:layout_toEndOf="@+id/textView2" />
+        android:layout_alignEnd="@+id/nextQuestionBtn" />
+
+    <TextView
+        android:text="Wager:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textSize="24sp"
+        android:textColor="@color/cardview_light_background"
+        android:layout_marginStart="10dp"
+        android:layout_alignBaseline="@+id/wager"
+        android:layout_alignBottom="@+id/wager"
+        android:layout_alignStart="@+id/nextQuestionBtn" />
 
 </RelativeLayout>

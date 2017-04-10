@@ -24,8 +24,6 @@ public class ResultActivity extends AppCompatActivity {
     private TextView     errorView;
     private EditText     wagerText;
     private Button       nextQuestion;
-    private GifImageView upArrow;
-    private GifImageView downArrow;
 
     private Score    score;
 
@@ -39,8 +37,6 @@ public class ResultActivity extends AppCompatActivity {
         errorView     = (TextView)findViewById(R.id.error);
         wagerText     = (EditText)findViewById(R.id.wager);
         nextQuestion  = (Button) findViewById(R.id.nextQuestionBtn);
-        upArrow       = (GifImageView) findViewById(R.id.upArrowGif);
-        downArrow     = (GifImageView) findViewById(R.id.downArrowGif);
 
         score         = ((TriviaApp) getApplication()).getScore();
         update();
@@ -53,19 +49,12 @@ public class ResultActivity extends AppCompatActivity {
         {
             feedback.setTextColor(Color.GREEN);
             feedback.setText("Correct");
-            upArrow.setVisibility(View.VISIBLE);
-            downArrow.setVisibility(View.GONE);
-            upArrow.startAnimation();
         }
         else
         {
             feedback.setTextColor(Color.RED);
             feedback.setText("Incorrect");
-            upArrow.setVisibility(View.GONE);
-            downArrow.setVisibility(View.VISIBLE);
-            downArrow.startAnimation();
         }
-
 
     }
     public boolean validateWager(){

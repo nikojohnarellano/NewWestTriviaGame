@@ -71,6 +71,7 @@ public class QuestionActivity extends AppCompatActivity {
         answerButton2.setAlpha(0.0f);
         answerButton3.setAlpha(0.0f);
         answerButton4.setAlpha(0.0f);
+        countdownView.setAlpha(0.0f);
 
         ValueAnimator animator = ValueAnimator.ofFloat(startSize, endSize);
         animator.setDuration(animationDuration);
@@ -84,14 +85,14 @@ public class QuestionActivity extends AppCompatActivity {
         });
 
         questionView.startAnimation(AnimationUtils.loadAnimation(QuestionActivity.this, R.anim.movetitle));
-        animator.setStartDelay(3000);
+        animator.setStartDelay(2500);
         animator.start();
 
-        answerButton1.animate().setStartDelay(4000).alpha(1.0f);
-        answerButton2.animate().setStartDelay(4250).alpha(1.0f);
-        answerButton3.animate().setStartDelay(4500).alpha(1.0f);
-        answerButton4.animate().setStartDelay(4750).alpha(1.0f);
-
+        answerButton1.animate().setStartDelay(3000).alpha(1.0f);
+        answerButton2.animate().setStartDelay(3100).alpha(1.0f);
+        answerButton3.animate().setStartDelay(3200).alpha(1.0f);
+        answerButton4.animate().setStartDelay(3300).alpha(1.0f);
+        countdownView.animate().setStartDelay(3300).alpha(1.0f);
         startTimer();
     }
 
@@ -138,7 +139,7 @@ public class QuestionActivity extends AppCompatActivity {
     private void startTimer() {
         final Score   score   = this.score;
 
-        cTimer = new CountDownTimer(20000, 1000) {
+        cTimer = new CountDownTimer(45000, 1000) {
             public void onTick(long millisUntilFinished)  {
                 countdownView.setText("seconds remaining: " + millisUntilFinished / 1000);
             }

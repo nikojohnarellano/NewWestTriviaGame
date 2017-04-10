@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.facebook.share.model.ShareLinkContent;
@@ -21,7 +22,6 @@ public class GameOverActivity extends AppCompatActivity {
 
     private TextView    gameOver;
     private TextView    name;
-    private Button      quitBtn;
     private Button      saveScoreBtn;
     private ShareDialog shareDialog;
     private TextView    myscore;
@@ -38,9 +38,8 @@ public class GameOverActivity extends AppCompatActivity {
         score       = ((TriviaApp) getApplication()).getScore();
 
         gameOver     = (TextView) findViewById(R.id.gameOverText);
-        quitBtn      = (Button)   findViewById(R.id.quit);
         myscore      = (TextView) findViewById(R.id.score);
-        name         = (TextView) findViewById(R.id.name);
+        name         = (EditText) findViewById(R.id.name);
         saveScoreBtn = (Button)   findViewById(R.id.saveHighscore);
 
         gameOver.setText("Game Over");
@@ -64,6 +63,9 @@ public class GameOverActivity extends AppCompatActivity {
         myHighscore.setScore((int)score.getHighScore());
         db.createHighScore(myHighscore);
         db.close();
+
+        name.setFocusable(false);
+        saveScoreBtn.setEnabled(false);
 
         Intent intent = new Intent(this, HighscoreActivity.class);
         startActivity(intent);
