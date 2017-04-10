@@ -1,11 +1,13 @@
 package a00953080.comp3717.bcit.ca.newwesttriviaapp.activities;
 
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -34,6 +36,10 @@ public class QuestionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final float startSize = 40; // Size in pixels
+        final float endSize = 25;
+        final int   animationDuration = 1000; // Animation duration in ms
+
         super.onCreate(savedInstanceState);
 
         //Remove title bar
@@ -52,7 +58,6 @@ public class QuestionActivity extends AppCompatActivity {
         score         = ((TriviaApp) getApplication()).getScore();
         randomOption  = new RandomOption(question);
 
-
         //sets the question on the page to the question of Question object
         questionView.setText(question.getQuestion());
 
@@ -62,6 +67,32 @@ public class QuestionActivity extends AppCompatActivity {
         answerButton3.setText(randomOption.getThirdPosition());
         answerButton4.setText(randomOption.getFourthPosition());
 
+        answerButton1.setAlpha(0.0f);
+        answerButton2.setAlpha(0.0f);
+        answerButton3.setAlpha(0.0f);
+        answerButton4.setAlpha(0.0f);
+        countdownView.setAlpha(0.0f);
+
+        ValueAnimator animator = ValueAnimator.ofFloat(startSize, endSize);
+        animator.setDuration(animationDuration);
+
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                float animatedValue = (float) valueAnimator.getAnimatedValue();
+                questionView.setTextSize(animatedValue);
+            }
+        });
+
+        questionView.startAnimation(AnimationUtils.loadAnimation(QuestionActivity.this, R.anim.movetitle));
+        animator.setStartDelay(2500);
+        animator.start();
+
+        answerButton1.animate().setStartDelay(3000).alpha(1.0f);
+        answerButton2.animate().setStartDelay(3100).alpha(1.0f);
+        answerButton3.animate().setStartDelay(3200).alpha(1.0f);
+        answerButton4.animate().setStartDelay(3300).alpha(1.0f);
+        countdownView.animate().setStartDelay(3300).alpha(1.0f);
         startTimer();
     }
 
@@ -108,7 +139,7 @@ public class QuestionActivity extends AppCompatActivity {
     private void startTimer() {
         final Score   score   = this.score;
 
-        cTimer = new CountDownTimer(20000, 1000) {
+        cTimer = new CountDownTimer(45000, 1000) {
             public void onTick(long millisUntilFinished)  {
                 countdownView.setText("seconds remaining: " + millisUntilFinished / 1000);
             }
@@ -119,6 +150,7 @@ public class QuestionActivity extends AppCompatActivity {
                 goToGameOver();
             }
         };
+
         cTimer.start();
     }
 

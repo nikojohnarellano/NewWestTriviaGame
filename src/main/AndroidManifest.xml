@@ -21,16 +21,16 @@
             android:authorities="com.facebook.app.FacebookContentProvider1277470608998587"
             android:exported="true" />
 
-        <activity android:name=".activities.SplashScreen">
+        <activity android:name=".activities.SplashScreen" />
+        <activity android:name=".activities.QuestionActivity" />
+        <activity android:name=".activities.ResultActivity" />
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.QuestionActivity" />
-        <activity android:name=".activities.ResultActivity" />
-        <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.GameOverActivity" />
         <activity android:name=".activities.HighscoreActivity"></activity>
     </application>

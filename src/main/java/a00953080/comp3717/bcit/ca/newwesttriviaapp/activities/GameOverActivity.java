@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.facebook.share.model.ShareLinkContent;
@@ -21,7 +22,6 @@ public class GameOverActivity extends AppCompatActivity {
 
     private TextView    gameOver;
     private TextView    name;
-    private Button      quitBtn;
     private Button      saveScoreBtn;
     private ShareDialog shareDialog;
     private TextView    myscore;
@@ -37,20 +37,13 @@ public class GameOverActivity extends AppCompatActivity {
         shareDialog = new ShareDialog(this);
         score       = ((TriviaApp) getApplication()).getScore();
 
-        gameOver = (TextView) findViewById(R.id.gameOverText);
-        quitBtn  = (Button) findViewById(R.id.quit);
+        gameOver     = (TextView) findViewById(R.id.gameOverText);
+        myscore      = (TextView) findViewById(R.id.score);
+        name         = (EditText) findViewById(R.id.name);
+        saveScoreBtn = (Button)   findViewById(R.id.saveHighscore);
 
         gameOver.setText("Game Over");
-
-        myscore = (TextView) findViewById(R.id.score);
         myscore.setText("Final Score: " + score.getHighScore());
-
-        name = (TextView) findViewById(R.id.name);
-
-
-        saveScoreBtn = (Button)findViewById(R.id.saveHighscore);
-        Button shareButton = (Button)findViewById(R.id.fb_share_button);
-
     }
 
     public void share(final View view) {
@@ -69,12 +62,13 @@ public class GameOverActivity extends AppCompatActivity {
         myHighscore.setName(name.getText().toString());
         myHighscore.setScore((int)score.getHighScore());
         db.createHighScore(myHighscore);
+        db.close();
+
+        name.setFocusable(false);
+        saveScoreBtn.setEnabled(false);
 
         Intent intent = new Intent(this, HighscoreActivity.class);
         startActivity(intent);
-    }
-    protected void facebookSDKInitialize() {
-       //FacebookSdk.sd
     }
 
     public void quit(final View view) {

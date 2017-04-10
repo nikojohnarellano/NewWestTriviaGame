@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_result"
     android:layout_width="match_parent"
@@ -8,37 +9,54 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="a00953080.comp3717.bcit.ca.newwesttriviaapp.activities.ResultActivity">
-
-    <Button
-        android:text="Quit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="76dp"
-        android:onClick="quit"/>
+    tools:context="a00953080.comp3717.bcit.ca.newwesttriviaapp.activities.ResultActivity"
+    android:background="@color/com_facebook_button_background_color_pressed">
 
     <Button
         android:text="Next Question"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
         android:id="@+id/nextQuestionBtn"
         android:onClick="goToNextQuestion"
+        android:layout_marginBottom="14dp"
         android:layout_above="@+id/button"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="31dp" />
+        android:textColor="@color/cardview_light_background"
+        android:background="?android:attr/colorFocusedHighlight"
+        android:textSize="16sp"
+        android:layout_height="50dp" />
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="67dp"
+        android:layout_marginTop="27dp"
         android:id="@+id/feedBack"
         android:textSize="24sp"
+        android:textColor="@color/cardview_light_background"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Quit"
+        android:layout_width="200dp"
+        android:id="@+id/button"
+        android:onClick="quit"
+        android:textColor="@color/cardview_light_background"
+        android:background="@android:color/darker_gray"
+        android:textSize="16sp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/nextQuestionBtn" />
+
+    <TextView
+        android:id="@+id/error"
+        android:textSize="14sp"
+        android:textColor="@color/cardview_light_background"
+        android:layout_height="30dp"
+        android:layout_width="300dp"
+        android:layout_above="@+id/wager"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="64dp" />
 
     <TextView
         android:text="TextView"
@@ -46,16 +64,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/currentScore"
         android:textSize="36sp"
-        android:layout_marginTop="31dp"
+        tools:textColor="@color/cardview_light_background"
         android:layout_below="@+id/feedBack"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/wager"
         android:layout_centerHorizontal="true"
-        android:id="@+id/error" />
+        android:layout_marginTop="47dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -65,9 +77,13 @@
         android:id="@+id/wager"
         android:singleLine="false"
         android:selectAllOnFocus="false"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/error"
-        android:width="200px" />
+        android:width="200px"
+        tools:textColor="@color/cardview_light_background"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="36dp"
+        android:textSize="24sp"
+        android:layout_above="@+id/nextQuestionBtn"
+        android:layout_alignEnd="@+id/nextQuestionBtn" />
 
     <TextView
         android:text="Wager:"
@@ -75,8 +91,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView2"
         android:textSize="24sp"
-        android:layout_marginEnd="13dp"
-        android:layout_centerVertical="true"
-        android:layout_toStartOf="@+id/wager" />
+        android:textColor="@color/cardview_light_background"
+        android:layout_marginStart="10dp"
+        android:layout_alignBaseline="@+id/wager"
+        android:layout_alignBottom="@+id/wager"
+        android:layout_alignStart="@+id/nextQuestionBtn" />
 
 </RelativeLayout>

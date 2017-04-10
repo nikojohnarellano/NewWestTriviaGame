@@ -8,64 +8,75 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="a00953080.comp3717.bcit.ca.newwesttriviaapp.activities.GameOverActivity">
-
-    <Button
-        android:text="Quit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/quit"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="76dp"
-        android:onClick="quit" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="113dp"
-        android:id="@+id/gameOverText" />
-
-    <Button
-        android:text="Share"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="38dp"
-        android:id="@+id/fb_share_button"
-        style="@style/com_facebook_button_share"
-        android:layout_above="@+id/quit"
-        android:layout_alignStart="@+id/quit"
-        android:onClick="share" />
-
-    <TextView
-        android:id="@+id/score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:text="My score"
-        android:layout_below="@+id/gameOverText"
-        android:layout_alignStart="@+id/fb_share_button" />
+    tools:context="a00953080.comp3717.bcit.ca.newwesttriviaapp.activities.GameOverActivity"
+    android:background="@color/com_facebook_button_background_color_pressed">
 
     <EditText
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
+        android:layout_marginTop="59dp"
+        android:textColor="@android:color/white"
         android:layout_below="@+id/score"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:id="@+id/saveHighscore"
+    <TextView
+        android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/name"
+        android:layout_marginTop="59dp"
+        android:id="@+id/gameOverText"
+        tools:text="Game Over"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="36sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Quit"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:id="@+id/quit"
+        android:layout_marginBottom="14dp"
+        android:onClick="quit"
+        android:textColor="@color/cardview_light_background"
+        android:background="@android:color/holo_orange_dark"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/fb_share_button" />
+
+    <Button
+        android:text="Share"
+        android:id="@+id/fb_share_button"
+        style="@style/com_facebook_button_share"
+        android:onClick="share"
+        android:layout_height="50dp"
+        android:layout_width="100dp"
+        android:layout_above="@+id/quit"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp" />
+
+    <Button
+        android:id="@+id/saveHighscore"
         android:onClick="saveHighscore"
-        android:text="Save Highscore" />
+        android:text="Save Highscore"
+        android:textColor="@color/cardview_light_background"
+        android:background="@android:color/holo_orange_dark"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My score"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="24sp"
+        android:layout_below="@+id/gameOverText"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
