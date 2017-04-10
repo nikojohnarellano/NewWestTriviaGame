@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
         help.setAlpha(0.0f);
 
         // Start the animation
-        start.animate().setStartDelay(5000).alpha(1.0f);
-        help.animate().setStartDelay(5000).alpha(1.0f);
+        start.animate().setStartDelay(4000).alpha(1.0f);
+        help.animate().setStartDelay(4000).alpha(1.0f);
 
         //deleteAllQuestions();
         createQuestions();

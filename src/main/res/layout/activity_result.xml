@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_result"
     android:layout_width="match_parent"
@@ -9,28 +10,41 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="a00953080.comp3717.bcit.ca.newwesttriviaapp.activities.ResultActivity"
-    android:background="@android:color/background_dark">
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="67dp"
-        android:id="@+id/feedBack"
-        android:textSize="24sp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/cardview_light_background" />
+    android:background="@color/com_facebook_button_background_color_pressed">
 
     <Button
         android:text="Next Question"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
         android:id="@+id/nextQuestionBtn"
         android:onClick="goToNextQuestion"
         android:layout_marginBottom="14dp"
         android:layout_above="@+id/button"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_height="60dp"
+        android:textColor="@color/cardview_light_background"
+        android:background="?android:attr/colorFocusedHighlight"
+        android:textSize="16sp" />
+
+    <Button
+        android:text="Quit"
+        android:layout_width="200dp"
+        android:id="@+id/button"
+        android:layout_marginBottom="22dp"
+        android:onClick="quit"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_height="60dp"
+        android:textColor="@color/cardview_light_background"
+        android:background="@android:color/darker_gray"
+        android:textSize="16sp" />
+
+    <com.felipecsl.gifimageview.library.GifImageView
+        android:id="@+id/downArrowGif"
+        android:scaleType="fitCenter"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/currentScore"
+        android:layout_toStartOf="@+id/feedBack" />
 
     <TextView
         android:text="Wager:"
@@ -38,11 +52,30 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView2"
         android:textSize="24sp"
+        android:textColor="@color/cardview_light_background"
         android:layout_alignBaseline="@+id/wager"
         android:layout_alignBottom="@+id/wager"
-        android:layout_toStartOf="@+id/error"
-        android:layout_marginEnd="15dp"
-        android:textColor="@color/cardview_light_background" />
+        android:layout_alignStart="@+id/downArrowGif"
+        android:layout_marginStart="10dp" />
+
+    <com.felipecsl.gifimageview.library.GifImageView
+        android:id="@+id/upArrowGif"
+        android:scaleType="fitCenter"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/downArrowGif"
+        android:layout_alignStart="@+id/textView2" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:id="@+id/feedBack"
+        android:textSize="24sp"
+        android:textColor="@color/cardview_light_background"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:text="TextView"
@@ -50,20 +83,20 @@
         android:layout_height="wrap_content"
         android:id="@+id/currentScore"
         android:textSize="36sp"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="18dp"
+        tools:textColor="@color/cardview_light_background"
         android:layout_below="@+id/feedBack"
-        android:layout_centerHorizontal="true"
-        tools:textColor="@color/cardview_light_background" />
+        android:layout_toEndOf="@+id/textView2" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/error"
         android:textSize="14sp"
-        android:layout_below="@+id/currentScore"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="42dp"
-        android:textColor="@color/cardview_light_background" />
+        android:layout_marginTop="32dp"
+        android:textColor="@color/cardview_light_background"
+        android:layout_height="30dp"
+        android:layout_width="300dp"
+        android:layout_below="@+id/downArrowGif"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -74,20 +107,10 @@
         android:singleLine="false"
         android:selectAllOnFocus="false"
         android:width="200px"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="41dp"
-        android:layout_below="@+id/error"
-        android:layout_toEndOf="@+id/error"
-        tools:textColor="@color/cardview_light_background" />
-
-    <Button
-        android:text="Quit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:layout_marginBottom="22dp"
-        android:onClick="quit"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        tools:textColor="@color/cardview_light_background"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="38dp"
+        android:layout_above="@+id/nextQuestionBtn"
+        android:layout_toEndOf="@+id/textView2" />
 
 </RelativeLayout>

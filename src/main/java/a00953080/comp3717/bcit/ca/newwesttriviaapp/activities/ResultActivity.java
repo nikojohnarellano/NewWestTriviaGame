@@ -3,24 +3,29 @@ package a00953080.comp3717.bcit.ca.newwesttriviaapp.activities;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.felipecsl.gifimageview.library.GifImageView;
 
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.R;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.TriviaApp;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.model.Score;
 
 public class ResultActivity extends AppCompatActivity {
-    private TextView feedback;
-    private TextView scoreView;
-    private TextView errorView;
-    private EditText wagerText;
-    private Button   nextQuestion;
+    private TextView     feedback;
+    private TextView     scoreView;
+    private TextView     errorView;
+    private EditText     wagerText;
+    private Button       nextQuestion;
+    private GifImageView upArrow;
+    private GifImageView downArrow;
 
     private Score    score;
 
@@ -34,19 +39,34 @@ public class ResultActivity extends AppCompatActivity {
         errorView     = (TextView)findViewById(R.id.error);
         wagerText     = (EditText)findViewById(R.id.wager);
         nextQuestion  = (Button) findViewById(R.id.nextQuestionBtn);
-
+        upArrow       = (GifImageView) findViewById(R.id.upArrowGif);
+        downArrow     = (GifImageView) findViewById(R.id.downArrowGif);
 
         score         = ((TriviaApp) getApplication()).getScore();
         update();
     }
 
     public void update() {
-        final String feedbackValue;
-        feedbackValue = this.score.isPreviousAnswerCorrect() ? "Correct" : "Incorrect";
-
         scoreAnimation();
-        feedback.setTextColor(this.score.isPreviousAnswerCorrect() ? Color.GREEN : Color.RED);
-        feedback.setText(feedbackValue);
+
+        if(this.score.isPreviousAnswerCorrect())
+        {
+            feedback.setTextColor(Color.GREEN);
+            feedback.setText("Correct");
+            upArrow.setVisibility(View.VISIBLE);
+            downArrow.setVisibility(View.GONE);
+            upArrow.startAnimation();
+        }
+        else
+        {
+            feedback.setTextColor(Color.RED);
+            feedback.setText("Incorrect");
+            upArrow.setVisibility(View.GONE);
+            downArrow.setVisibility(View.VISIBLE);
+            downArrow.startAnimation();
+        }
+
+
     }
     public boolean validateWager(){
         final String value = wagerText.getText().toString();

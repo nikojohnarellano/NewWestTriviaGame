@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="a00953080.comp3717.bcit.ca.newwesttriviaapp.activities.QuestionActivity"
-    android:background="@android:color/black">
+    android:background="@color/com_facebook_button_background_color_pressed">
 
     <TextView
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_blue_bright"
+        android:background="@android:color/holo_orange_dark"
         android:minHeight="0dp"
         android:onClick="backToHomePage"
         android:text="Quit" />
@@ -90,7 +90,7 @@
         android:textSize="40sp"
         android:textAlignment="center"
         android:layout_height="400dp"
-        android:layout_alignBottom="@+id/answerButton3"
+        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
 
