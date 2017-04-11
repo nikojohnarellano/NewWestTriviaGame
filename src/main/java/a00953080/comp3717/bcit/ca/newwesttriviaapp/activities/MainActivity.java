@@ -19,9 +19,6 @@ import a00953080.comp3717.bcit.ca.newwesttriviaapp.model.Score;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.questions.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity {
-    private ImageView title;
-    private Button start;
-    private Button help;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        title   = (ImageView) findViewById(R.id.titleLogo);
-        start   = (Button) findViewById(R.id.start_button);
-        help    = (Button) findViewById(R.id.help_button);
+        ImageView title   = (ImageView) findViewById(R.id.titleLogo);
+        Button start   = (Button) findViewById(R.id.start_button);
+        Button help    = (Button) findViewById(R.id.help_button);
 
         title.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, R.anim.movetitle));
 
@@ -132,14 +129,14 @@ public class MainActivity extends AppCompatActivity {
                     .setOption3("White Rock"));
 
             dbHelper.createQuestion(new Question()
-                    .setQuestion("Which pf thse cities has the highest population?")
+                    .setQuestion("Which of these cities has the highest population?")
                     .setAnswer("Maple Ridge")
                     .setOption1("New Westminster")
                     .setOption2("Port Moody")
                     .setOption3("Pitt Meadows"));
 
             dbHelper.createQuestion(new Question()
-                    .setQuestion("How much has the population of New Westminster grown since 2011?\n")
+                    .setQuestion("How much has the population of New Westminster grown since 2011?")
                     .setAnswer("5,000")
                     .setOption1("3,000")
                     .setOption2("7,500")
@@ -160,14 +157,14 @@ public class MainActivity extends AppCompatActivity {
                     .setOption3("Vance McFayden"));
 
             dbHelper.createQuestion(new Question()
-                    .setQuestion("How many electric vehicle charging stations are in New Westminster?\n")
+                    .setQuestion("How many electric vehicle charging stations are in New Westminster?")
                     .setAnswer("6")
                     .setOption1("0")
                     .setOption2("1")
                     .setOption3("3"));
 
             dbHelper.createQuestion(new Question()
-                    .setQuestion("Which location does not have an electric vehicle charging station?\n")
+                    .setQuestion("Which location does not have an electric vehicle charging station?")
                     .setAnswer("Douglas College")
                     .setOption1("Royal Columbian Hospital")
                     .setOption2("Anvil Centre")
@@ -177,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
                     .setQuestion("Where in New Westminster are car collisions most likely to happen?")
                     .setAnswer("Brunette Ave & Trans Canada Highway ramps")
                     .setOption1("Pattullo Bridge")
-                    .setOption2("Braid St & Brunnette Ave")
+                    .setOption2("Braid St & Brunette Ave")
                     .setOption3("Canada Way (8th st) & 10th Ave"));
 
             dbHelper.createQuestion(new Question()
@@ -209,14 +206,14 @@ public class MainActivity extends AppCompatActivity {
                     .setOption3("4,000"));
 
             dbHelper.createQuestion(new Question()
-                    .setQuestion("What is the average number of calls that the Emergency Services responds to, per year? (Fire & Rescue Services)\n")
+                    .setQuestion("What is the average number of calls that the Emergency Services responds to, per year? (Fire & Rescue Services)")
                     .setAnswer("5,500")
                     .setOption1("6,000")
                     .setOption2("4,000")
                     .setOption3("5,000"));
 
             dbHelper.createQuestion(new Question()
-                    .setQuestion("How many people are employed by the City of New Westminster?\n")
+                    .setQuestion("How many people are employed by the City of New Westminster?")
                     .setAnswer("1,122")
                     .setOption1("952")
                     .setOption2("1,048")

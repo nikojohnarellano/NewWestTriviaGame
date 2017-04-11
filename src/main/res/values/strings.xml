@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">NewWestTriviaApp</string>
     <string name="facebook_app_id">1277470608998587</string>
+    <string name="no_highscore_available">No score available</string>
+    <string name="na">N/A</string>
+    <string name="cant_wager_more">You cannot wager more than your current score</string>
+    <string name="correct">Correct</string>
+    <string name="incorrect">Incorrect</string>
 </resources>

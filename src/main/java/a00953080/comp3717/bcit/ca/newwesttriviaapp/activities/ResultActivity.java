@@ -44,12 +44,12 @@ public class ResultActivity extends AppCompatActivity {
         if(this.score.isPreviousAnswerCorrect())
         {
             feedback.setTextColor(Color.GREEN);
-            feedback.setText("Correct");
+            feedback.setText(getText(R.string.correct));
         }
         else
         {
             feedback.setTextColor(Color.RED);
-            feedback.setText("Incorrect");
+            feedback.setText(getText(R.string.incorrect));
         }
 
     }
@@ -77,7 +77,7 @@ public class ResultActivity extends AppCompatActivity {
 
     public void goToNextQuestion(final View view){
         if(!validateWager()){
-            errorView.setText("You cannot wager more than your current score");
+            errorView.setText(getText(R.string.cant_wager_more));
             return;
         }
         Intent nextQuestionIntent = new Intent(this, QuestionActivity.class);
