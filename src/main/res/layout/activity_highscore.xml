@@ -31,174 +31,163 @@
         android:layout_height="wrap_content"
         android:onClick="Back"
         android:text="Back"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="392dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="41dp"
         android:background="@android:color/holo_orange_dark"
-        android:textColor="@color/cardview_light_background" />
+        android:textColor="@color/cardview_light_background"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:id="@+id/highscore3"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:text="highscore3"
-        android:layout_below="@+id/highscore2"
-        android:layout_alignStart="@+id/highscore2"
-        android:textSize="18sp"
-        android:textColor="@color/cardview_light_background" />
-
-    <TextView
-        android:id="@+id/highscore4"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/highscore3"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        android:text="highscore4"
-        android:textSize="18sp"
-        android:textColor="@color/cardview_light_background" />
-
-    <TextView
-        android:id="@+id/highscore5"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/highscore4"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:text="highscore5"
-        android:textSize="18sp"
-        android:textColor="@color/cardview_light_background" />
-
-    <TextView
-        android:id="@+id/score1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/highscore1"
-        android:layout_toEndOf="@+id/highscore1"
-        android:text="TextView"
-        android:textSize="18sp"
-        android:textColor="@color/cardview_light_background" />
-
-    <TextView
-        android:id="@+id/score2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/highscore3"
-        android:layout_toEndOf="@+id/highscore2"
-        android:text="TextView"
-        android:textSize="18sp"
-        android:textColor="@color/cardview_light_background" />
-
-    <TextView
-        android:id="@+id/score3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/score2"
-        android:layout_alignTop="@+id/highscore3"
-        android:text="TextView"
-        android:textSize="18sp"
-        android:textColor="@color/cardview_light_background" />
-
-    <TextView
-        android:id="@+id/score4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/highscore5"
-        android:layout_toEndOf="@+id/highscore4"
-        android:text="TextView"
-        android:textSize="18sp"
-        android:textColor="@color/cardview_light_background" />
-
-    <TextView
-        android:id="@+id/score5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/highscore5"
-        android:layout_alignEnd="@+id/score4"
-        android:layout_alignTop="@+id/highscore5"
-        android:text="TextView"
-        android:textSize="18sp"
-        android:textColor="@color/cardview_light_background" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="#2 - "
-        android:textSize="18sp"
-        android:layout_alignBaseline="@+id/highscore2"
-        android:layout_alignBottom="@+id/highscore2"
-        android:layout_alignStart="@+id/textView16"
-        android:textColor="@color/cardview_light_background" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="#3 - "
-        android:textSize="18sp"
-        android:layout_alignBaseline="@+id/highscore3"
-        android:layout_alignBottom="@+id/highscore3"
-        android:layout_alignStart="@+id/textView3"
-        android:textColor="@color/cardview_light_background" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="#4 - "
-        android:textSize="18sp"
-        android:layout_alignBaseline="@+id/highscore4"
-        android:layout_alignBottom="@+id/highscore4"
-        android:layout_alignStart="@+id/textView4"
-        android:textColor="@color/cardview_light_background" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="#5 - "
-        android:textSize="18sp"
-        android:layout_alignBaseline="@+id/highscore5"
-        android:layout_alignBottom="@+id/highscore5"
-        android:layout_alignStart="@+id/textView5"
-        android:textColor="@color/cardview_light_background" />
-
-    <TextView
-        android:id="@+id/highscore1"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="58dp"
-        android:text="highscore1"
-        android:textSize="18sp"
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
         android:layout_below="@+id/highscoresLabel"
-        android:layout_alignStart="@+id/highscore2"
-        android:textColor="@color/cardview_light_background" />
+        android:layout_marginTop="46dp"
+        android:stretchColumns="1"
+        android:layout_alignEnd="@+id/highscoresLabel"
+        android:layout_alignStart="@+id/highscoresLabel">
 
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="#1 - "
-        android:textSize="18sp"
-        android:layout_alignBaseline="@+id/highscore1"
-        android:layout_alignBottom="@+id/highscore1"
-        android:layout_alignStart="@+id/highscoresLabel"
-        android:textColor="@color/cardview_light_background" />
+        <TableRow>
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:text="#1 - "
+                android:textColor="@color/cardview_light_background" />
+            <TextView
+                android:id="@+id/highscore1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:text="highscore1"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="18sp"
+                android:gravity="center" />
+            <TextView
+                android:id="@+id/score1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:text="TextView"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="18sp"
+                android:gravity="center"/>
+        </TableRow>
 
-    <TextView
-        android:id="@+id/highscore2"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
-        android:text="highscore2"
-        android:textSize="18sp"
-        android:layout_below="@+id/highscore1"
-        android:layout_alignStart="@+id/highscore4"
-        android:textColor="@color/cardview_light_background" />
+        <TableRow>
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#2 - "
+                android:textSize="18sp"
+                android:textColor="@color/cardview_light_background"
+                android:layout_column="0"
+                android:gravity="center" />
+            <TextView
+                android:id="@+id/highscore2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="highscore2"
+                android:textSize="18sp"
+                android:textColor="@color/cardview_light_background"
+                android:gravity="center"
+                android:layout_column="1"/>
+            <TextView
+                android:id="@+id/score2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="18sp"
+                android:textColor="@color/cardview_light_background"
+                android:gravity="center"
+                android:layout_column="2"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#3 - "
+                android:textSize="18sp"
+                android:textColor="@color/cardview_light_background"
+                android:gravity="center"
+                android:layout_column="0"/>
+            <TextView
+                android:id="@+id/highscore3"
+                android:text="highscore3"
+                android:textSize="18sp"
+                android:textColor="@color/cardview_light_background"
+                android:gravity="center"
+                android:layout_column="1"/>
+            <TextView
+                android:id="@+id/score3"
+                android:text="TextView"
+                android:textSize="18sp"
+                android:textColor="@color/cardview_light_background"
+                android:gravity="center"
+                android:layout_column="2"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#4 - "
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textColor="@color/cardview_light_background" />
+            <TextView
+                android:id="@+id/highscore4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="highscore4"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textColor="@color/cardview_light_background" />
+            <TextView
+                android:id="@+id/score4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textColor="@color/cardview_light_background" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#5 - "
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textColor="@color/cardview_light_background" />
+
+            <TextView
+                android:id="@+id/highscore5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="highscore5"
+                android:textColor="@color/cardview_light_background"
+                android:gravity="center"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/score5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textColor="@color/cardview_light_background"
+                android:gravity="center"
+                android:textSize="18sp" />
+        </TableRow>
+    </TableLayout>
 
 
 </RelativeLayout>

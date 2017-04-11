@@ -3,16 +3,12 @@ package a00953080.comp3717.bcit.ca.newwesttriviaapp.activities;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.felipecsl.gifimageview.library.GifImageView;
 
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.R;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.TriviaApp;
@@ -48,12 +44,12 @@ public class ResultActivity extends AppCompatActivity {
         if(this.score.isPreviousAnswerCorrect())
         {
             feedback.setTextColor(Color.GREEN);
-            feedback.setText("Correct");
+            feedback.setText(getText(R.string.correct));
         }
         else
         {
             feedback.setTextColor(Color.RED);
-            feedback.setText("Incorrect");
+            feedback.setText(getText(R.string.incorrect));
         }
 
     }
@@ -62,7 +58,7 @@ public class ResultActivity extends AppCompatActivity {
         final Long   bet;
 
         if(value.isEmpty())
-            return false;
+            return true;
 
         bet = Long.parseLong(value);
 
@@ -81,7 +77,7 @@ public class ResultActivity extends AppCompatActivity {
 
     public void goToNextQuestion(final View view){
         if(!validateWager()){
-            errorView.setText("You cannot wager more than your current score");
+            errorView.setText(getText(R.string.cant_wager_more));
             return;
         }
         Intent nextQuestionIntent = new Intent(this, QuestionActivity.class);

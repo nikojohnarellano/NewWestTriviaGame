@@ -26,7 +26,7 @@ public class HighscoreActivity extends AppCompatActivity {
         TextView highscore3 = (TextView) findViewById(R.id.highscore3);
         TextView highscore4 = (TextView) findViewById(R.id.highscore4);
         TextView highscore5 = (TextView) findViewById(R.id.highscore5);
-
+        String score;
         TextView score1 = (TextView) findViewById(R.id.score1);
         TextView score2 = (TextView) findViewById(R.id.score2);
         TextView score3 = (TextView) findViewById(R.id.score3);
@@ -36,7 +36,8 @@ public class HighscoreActivity extends AppCompatActivity {
 
         if(highestScores.size() > 0) {
             highscore1.setText(highestScores.get(0).getName());
-            score1.setText("" +highestScores.get(0).getScore());
+            score = "" + highestScores.get(0).getScore();
+            score1.setText(score);
         } else {
             highscore1.setText(getString(R.string.no_highscore_available));
             score1.setText(getString(R.string.na));
@@ -44,7 +45,8 @@ public class HighscoreActivity extends AppCompatActivity {
 
         if(highestScores.size() > 1) {
             highscore2.setText(highestScores.get(1).getName());
-            score2.setText("" +highestScores.get(1).getScore());
+            score = "" +highestScores.get(1).getScore();
+            score2.setText(score);
         }else {
             highscore2.setText(getString(R.string.no_highscore_available));
             score2.setText(getString(R.string.na));
@@ -52,7 +54,8 @@ public class HighscoreActivity extends AppCompatActivity {
 
         if(highestScores.size() > 2) {
             highscore3.setText(highestScores.get(2).getName());
-            score3.setText("" +highestScores.get(2).getScore());
+            score = "" +highestScores.get(2).getScore();
+            score3.setText(score);
         } else {
             highscore3.setText(getString(R.string.no_highscore_available));
             score3.setText(getString(R.string.na));
@@ -60,7 +63,8 @@ public class HighscoreActivity extends AppCompatActivity {
 
         if(highestScores.size() > 3) {
             highscore4.setText(highestScores.get(3).getName());
-            score4.setText("" +highestScores.get(3).getScore());
+            score = "" +highestScores.get(3).getScore();
+            score4.setText(score);
         } else {
             highscore4.setText(getString(R.string.no_highscore_available));
             score4.setText(getString(R.string.na));
@@ -68,7 +72,8 @@ public class HighscoreActivity extends AppCompatActivity {
 
         if(highestScores.size() > 4) {
             highscore5.setText(highestScores.get(4).getName());
-            score5.setText("" + highestScores.get(4).getScore());
+            score = "" + highestScores.get(4).getScore();
+            score5.setText(score);
         } else {
             highscore5.setText(getString(R.string.no_highscore_available));
             score5.setText(getString(R.string.na));
