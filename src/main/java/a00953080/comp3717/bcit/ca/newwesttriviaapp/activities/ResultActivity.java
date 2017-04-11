@@ -3,16 +3,12 @@ package a00953080.comp3717.bcit.ca.newwesttriviaapp.activities;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.felipecsl.gifimageview.library.GifImageView;
 
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.R;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.TriviaApp;
@@ -62,7 +58,7 @@ public class ResultActivity extends AppCompatActivity {
         final Long   bet;
 
         if(value.isEmpty())
-            return false;
+            return true;
 
         bet = Long.parseLong(value);
 
