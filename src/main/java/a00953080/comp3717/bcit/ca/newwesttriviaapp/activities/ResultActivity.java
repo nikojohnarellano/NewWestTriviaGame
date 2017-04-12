@@ -15,11 +15,12 @@ import a00953080.comp3717.bcit.ca.newwesttriviaapp.TriviaApp;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.model.Score;
 
 public class ResultActivity extends AppCompatActivity {
-    private TextView     feedback;
     private TextView     scoreView;
     private TextView     errorView;
+    private TextView     highScoreView;
     private EditText     wagerText;
     private Button       nextQuestion;
+
 
     private Score    score;
 
@@ -28,10 +29,10 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        feedback      = (TextView)findViewById(R.id.feedBack);
         scoreView     = (TextView)findViewById(R.id.currentScore);
         errorView     = (TextView)findViewById(R.id.error);
         wagerText     = (EditText)findViewById(R.id.wager);
+        highScoreView = (TextView)findViewById(R.id.highScore);
         nextQuestion  = (Button) findViewById(R.id.nextQuestionBtn);
 
         score         = ((TriviaApp) getApplication()).getScore();
@@ -40,32 +41,22 @@ public class ResultActivity extends AppCompatActivity {
 
     public void update() {
         scoreAnimation();
-
-        if(this.score.isPreviousAnswerCorrect())
-        {
-            feedback.setTextColor(Color.GREEN);
-            feedback.setText(getText(R.string.correct));
-        }
-        else
-        {
-            feedback.setTextColor(Color.RED);
-            feedback.setText(getText(R.string.incorrect));
-        }
-
+        highScoreView.setText("Current high score: " + score.getHighScore());
     }
-    public boolean validateWager(){
+
+    public WagerValidation validateWager(){
         final String value = wagerText.getText().toString();
         final Long   bet;
 
         if(value.isEmpty())
-            return true;
+            return WagerValidation.EMPTY;
 
         bet = Long.parseLong(value);
 
         if(bet > this.score.getScore())
-            return false;
+            return WagerValidation.GREATER;
 
-        return true;
+        return WagerValidation.VALID;
     }
     public void updateWager(){
         String value = wagerText.getText().toString();
@@ -76,10 +67,16 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     public void goToNextQuestion(final View view){
-        if(!validateWager()){
+        WagerValidation wagerValidation = validateWager();
+
+        if(wagerValidation == WagerValidation.GREATER){
             errorView.setText(getText(R.string.cant_wager_more));
             return;
+        } else if (wagerValidation == WagerValidation.EMPTY) {
+            errorView.setText(getText(R.string.empty_wager));
+            return;
         }
+
         Intent nextQuestionIntent = new Intent(this, QuestionActivity.class);
         updateWager();
         startActivity(nextQuestionIntent);
@@ -96,7 +93,7 @@ public class ResultActivity extends AppCompatActivity {
         animator.setDuration(1000);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             public void onAnimationUpdate(ValueAnimator animation) {
-                ResultActivity.this.scoreView.setTextColor(Color.WHITE);
+                ResultActivity.this.scoreView.setTextColor(score.isPreviousAnswerCorrect() ? Color.GREEN : Color.RED);
                 ResultActivity.this.scoreView.setText("" + (int) animation.getAnimatedValue());
             }
         });
@@ -106,5 +103,10 @@ public class ResultActivity extends AppCompatActivity {
 
     public void quit(final View view) {
         finish();
+    }
+
+    public enum WagerValidation
+    {
+        EMPTY, GREATER, VALID
     }
 }

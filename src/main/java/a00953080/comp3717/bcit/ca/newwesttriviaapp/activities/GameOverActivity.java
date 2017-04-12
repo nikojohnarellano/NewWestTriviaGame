@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareDialog;
 
+import org.w3c.dom.Text;
+
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.R;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.TriviaApp;
 import a00953080.comp3717.bcit.ca.newwesttriviaapp.model.HighScore;
@@ -25,6 +27,7 @@ public class GameOverActivity extends AppCompatActivity {
     private Button      saveScoreBtn;
     private ShareDialog shareDialog;
     private TextView    myscore;
+    private TextView    error;
     private Score       score;
     private DatabaseHelper db;
 
@@ -39,6 +42,7 @@ public class GameOverActivity extends AppCompatActivity {
 
         gameOver     = (TextView) findViewById(R.id.gameOverText);
         myscore      = (TextView) findViewById(R.id.score);
+        error        = (TextView) findViewById(R.id.errorName);
         name         = (EditText) findViewById(R.id.name);
         saveScoreBtn = (Button)   findViewById(R.id.saveHighscore);
 
@@ -58,7 +62,17 @@ public class GameOverActivity extends AppCompatActivity {
     }
 
     public void saveHighscore(final View view) {
-        HighScore myHighscore = new HighScore();
+        final HighScore myHighscore;
+        final String userName;
+
+        userName = name.getText().toString().trim();
+
+        if (userName.length() == 0) {
+            error.setText("Please type a valid name.");
+            return;
+        }
+
+        myHighscore = new HighScore();
         myHighscore.setName(name.getText().toString());
         myHighscore.setScore((int)score.getHighScore());
         db.createHighScore(myHighscore);
