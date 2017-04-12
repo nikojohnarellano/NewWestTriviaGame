@@ -4,6 +4,7 @@
     <string name="no_highscore_available">No score available</string>
     <string name="na">N/A</string>
     <string name="cant_wager_more">You cannot wager more than your current score</string>
+    <string name="empty_wager">Please enter a wager</string>
     <string name="correct">Correct</string>
     <string name="incorrect">Incorrect</string>
 </resources>

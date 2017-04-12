@@ -32,7 +32,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.GameOverActivity" />
-        <activity android:name=".activities.HighscoreActivity"></activity>
+        <activity android:name=".activities.HighscoreActivity" />
+        <activity android:name=".activities.AboutActivity" />
+        <activity android:name=".activities.HelpActivity"></activity>
     </application>
 
 </manifest>

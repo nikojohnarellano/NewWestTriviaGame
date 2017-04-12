@@ -12,38 +12,6 @@
     tools:context="a00953080.comp3717.bcit.ca.newwesttriviaapp.activities.MainActivity"
     android:background="@color/com_facebook_button_background_color_pressed">
 
-    <Button
-        android:text="Start"
-        android:layout_height="wrap_content"
-        android:id="@+id/start_button"
-        android:width="@dimen/activity_horizontal_margin"
-        style="@style/Widget.AppCompat.Button"
-        android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
-        android:elevation="0dp"
-        android:onClick="toQuestion"
-        android:layout_marginBottom="14dp"
-        android:layout_above="@+id/help_button"
-        android:layout_centerHorizontal="true"
-        android:backgroundTint="@android:color/holo_blue_dark"
-        android:textSize="24sp"
-        android:height="200px"
-        android:textColor="@color/cardview_light_background"
-        android:layout_width="match_parent" />
-
-    <Button
-        android:text="Help"
-        android:layout_height="wrap_content"
-        android:id="@+id/help_button"
-        android:backgroundTint="@android:color/holo_blue_dark"
-        android:elevation="0dp"
-        android:textSize="24sp"
-        android:layout_width="match_parent"
-        android:height="200px"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:textColorHighlight="@color/cardview_light_background"
-        android:textColor="@color/cardview_light_background" />
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,4 +19,51 @@
         android:id="@+id/titleLogo"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Help"
+        android:id="@+id/help_button"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:elevation="0dp"
+        android:textSize="24sp"
+        android:height="200px"
+        android:textColorHighlight="@color/cardview_light_background"
+        android:textColor="@color/cardview_light_background"
+        android:layout_above="@+id/aboutButton"
+        android:layout_alignStart="@+id/start_button"
+        android:layout_height="60dp"
+        android:layout_width="200dp"
+        android:onClick="toHelp"/>
+
+    <Button
+        android:text="Start"
+        android:id="@+id/start_button"
+        android:width="@dimen/activity_horizontal_margin"
+        style="@style/Widget.AppCompat.Button"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
+        android:elevation="0dp"
+        android:onClick="toQuestion"
+        android:backgroundTint="?android:attr/colorActivatedHighlight"
+        android:textSize="24sp"
+        android:height="200px"
+        android:textColor="@color/cardview_light_background"
+        android:layout_height="60dp"
+        android:layout_width="200dp"
+        android:layout_above="@+id/help_button"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="About"
+        android:id="@+id/aboutButton"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:elevation="0dp"
+        android:textSize="24sp"
+        android:height="200px"
+        android:textColorHighlight="@color/cardview_light_background"
+        android:textColor="@color/cardview_light_background"
+        android:layout_height="60dp"
+        android:layout_width="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/help_button"
+        android:onClick="toAbout"/>
 </RelativeLayout>
